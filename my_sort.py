@@ -1,24 +1,23 @@
-def selection_sort(numbers):
+def custom_sort(numbers):
     """
-    Sorts a list of numbers in ascending order in-place using Selection Sort.
+    Sorts a list of integers in ascending order using the Bubble Sort algorithm.
+    Compares elements one-by-one and returns a new sorted list.
     
     Args:
-        numbers: A list of integers to be sorted.
+        numbers: A list of integers.
         
     Returns:
-        The total number of comparisons made during the sorting process.
+        A tuple containing (the new sorted list, the number of comparisons made).
     """
+    sorted_list = list(numbers)
+    n = len(sorted_list)
     comparisons = 0
-    n = len(numbers)
     
-    for i in range(n - 1):
-        min_index = i
-
-        for j in range(i + 1, n):
+    for i in range(n):
+        for j in range(0, n - i - 1):
             comparisons += 1
-            if numbers[j] < numbers[min_index]:
-                min_index = j
- 
-        numbers[i], numbers[min_index] = numbers[min_index], numbers[i]
-        
-    return comparisons
+            if sorted_list[j] > sorted_list[j + 1]:
+
+                sorted_list[j], sorted_list[j + 1] = sorted_list[j + 1], sorted_list[j]
+                
+    return sorted_list, comparisons
